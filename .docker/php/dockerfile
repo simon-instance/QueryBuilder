@@ -1,0 +1,19 @@
+FROM php:8.0.14-fpm-buster
+
+RUN apt-get update \
+    && apt-get install -y neovim
+
+COPY .docker/php/installzsh.sh /usr/local/bin/installzsh
+RUN chmod +x /usr/local/bin/installzsh \
+    && installzsh
+
+RUN mkdir -p /usr/src/app/website
+WORKDIR /usr/src/app/website
+
+COPY ./src /usr/src/app/website
+
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+RUN composer install
+
+EXPOSE 9000
+EXPOSE 80

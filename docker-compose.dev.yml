@@ -1,0 +1,21 @@
+version: "3.6"
+
+services:
+    php:
+        container_name: querybuilder_php 
+        build: 
+            context: .
+            dockerfile: .docker/php/dockerfile
+        ports:
+            - 9000:9000
+            - 80:80
+        depends_on:
+            - db
+    db:
+        container_name: querybuilder_db 
+        build: 
+            context: .docker/mysql
+            dockerfile: dockerfile
+        restart: always
+        ports:
+            - 3306:3306

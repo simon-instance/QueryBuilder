@@ -1,0 +1,14 @@
+{
+    "name": "Beroepsproduct",
+    "dockerComposeFile": ["../docker-compose.dev.yml"],
+    "service": "php",
+    "extensions": [
+      "cweijan.vscode-mysql-client2"
+    ],
+    "settings": {
+        "terminal.integrated.shell.linux":  "/bin/zsh"
+    },
+    "workspaceFolder": "/usr/src/app/website",
+    "shutdownAction": "stopCompose",
+    "postCreateCommand": "php -S 0.0.0.0:80"
+  }
