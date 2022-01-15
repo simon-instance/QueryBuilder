@@ -4,14 +4,11 @@ declare(strict_types=1);
 
 namespace QueryBuilder\lib;
 
-use QueryBuilder\lib\abstract\AbstractQuery;
+use QueryBuilder\lib\abstract\QueryTypes;
 
-class QueryBuilder extends AbstractQuery {
-
-    private $queryType;
+class QueryBuilder extends QueryTypes {
 
     public function __construct() {
-        $this->queryType = $queryType;
     }
 
     public function test() {

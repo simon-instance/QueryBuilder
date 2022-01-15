@@ -7,4 +7,4 @@ use QueryBuilder\lib\Query;
 
 $query = new Query();
 
-$query->yeet();
+$query->select();
