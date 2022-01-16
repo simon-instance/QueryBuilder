@@ -20,6 +20,20 @@ final class Query extends QueryBuilder {
         parent::__construct();
     }
 
+    private function setQueryParams() {
+        $arguments = func_get_args();
+
+        $queryParams[$this->queryType]["tableName"] = $arguments[0];
+        $queryParams[$this->queryType]["columns"] = $arguments[1];
+
+        if  (
+                $this->queryType == self::INSERT 
+                || $this->queryType == self::UPDATE
+            ) {
+                $queryParams[$this->queryType]["values"] = $arguments[2];
+            }
+    }
+
     public function insert(string $tableName = null, array $columns = [], array $values = []) {
         $this->queryType = self::INSERT;
         if  (
@@ -35,6 +49,8 @@ final class Query extends QueryBuilder {
                     $values
                 );
             }
+        
+        $this->setQueryParams($tableName, $columns, $values);
     }
 
     public function select(array $columns = [], string $tableName = null) {
@@ -49,6 +65,8 @@ final class Query extends QueryBuilder {
                     $columns
                 );
             }
+
+        $this->setQueryParams($tableName, $columns);
     }
 
     public function update($tableName = null, array $columns = [], array $values = []) {
@@ -65,6 +83,7 @@ final class Query extends QueryBuilder {
                 );
             }
 
+        $this->setQueryParams($tableName, $columns, $values);
     }
 
     public function delete() {

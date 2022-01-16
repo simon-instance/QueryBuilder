@@ -10,9 +10,9 @@ use Exception;
 class OrmException extends Exception {
     // Crud stands for INSERT, SELECT, UPDATE, DELETE sql statements
     public static function invalidCrudQueryParams($queryType = QueryTypes::SELECT): self {
-        $errorMessage = self::getErrorMessage(func_get_args());
-
-        return new self();
+        return new self(
+            self::getErrorMessage(func_get_args())
+        );
     }
 
     // Insert and update both have 4 arguments, select has 2
@@ -75,6 +75,7 @@ class OrmException extends Exception {
                 );
                 break;
         }
-        dd($errorString);
+
+        return $errorString;
     }
 }
