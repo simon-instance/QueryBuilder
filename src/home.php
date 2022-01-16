@@ -7,4 +7,4 @@ use QueryBuilder\lib\Query;
 
 $query = new Query();
 
-$query->select();
+$query->update("table test", ["lol1", "lol2"]);

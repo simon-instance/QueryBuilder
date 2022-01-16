@@ -28,7 +28,12 @@ final class Query extends QueryBuilder {
                 || empty($values)
                 || sizeof($columns) != sizeof($values)
             ) {
-                throw OrmException::invalidCrudQueryParams($this->queryType, $tableName, $columns, $values);
+                throw OrmException::invalidCrudQueryParams(
+                    $this->queryType,
+                    $tableName,
+                    $columns,
+                    $values
+                );
             }
     }
 
@@ -38,7 +43,11 @@ final class Query extends QueryBuilder {
                 empty($columns)
                 || $tableName === null
             ) {
-                throw OrmException::invalidCrudQueryParams($this->queryType, $tableName, $columns);
+                throw OrmException::invalidCrudQueryParams(
+                    $this->queryType,
+                    $tableName,
+                    $columns
+                );
             }
     }
 
@@ -48,7 +57,12 @@ final class Query extends QueryBuilder {
                 empty($columns)
                 || empty($values)
             ) {
-                throw OrmException::invalidCrudQueryParams($this->queryType, $tableName, $columns, $values);
+                throw OrmException::invalidCrudQueryParams(
+                    $this->queryType,
+                    $tableName,
+                    $columns,
+                    $values
+                );
             }
 
     }
