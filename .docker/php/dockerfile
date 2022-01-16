@@ -12,7 +12,9 @@ WORKDIR /usr/src/app/website
 
 # Use github token so i can push to the repo without needing to manually add a git remote
 ARG GITHUB_TOKEN
-RUN git clone "https://${GITHUB_TOKEN}@github.com/simon-instance/QueryBuilder.git" .
+RUN git clone "https://${GITHUB_TOKEN}@github.com/simon-instance/QueryBuilder.git" . \
+    && git config --global user.email simon@gmail.com \
+    && git config --global user.name simon-instance
 
 WORKDIR /usr/src/app/website/src
 
