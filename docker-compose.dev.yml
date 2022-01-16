@@ -4,8 +4,11 @@ services:
     php:
         container_name: querybuilder_php 
         build: 
-            context: .
-            dockerfile: .docker/php/dockerfile
+            context: .docker/php
+            dockerfile: dockerfile
+            args:
+                GITHUB_TOKEN: ${GITHUB_TOKEN}
+
         ports:
             - 9000:9000
             - 80:80

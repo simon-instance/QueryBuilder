@@ -8,7 +8,10 @@
     "settings": {
         "terminal.integrated.shell.linux":  "/bin/zsh"
     },
-    "workspaceFolder": "/usr/src/app/website",
+    "remoteEnv": {
+      "GITHUB_TOKEN": "${localEnv:GITHUB_TOKEN}"
+    },
+    "workspaceFolder": "/usr/src/app/website/src",
     "shutdownAction": "stopCompose",
     "postCreateCommand": "php -S 0.0.0.0:80"
   }
